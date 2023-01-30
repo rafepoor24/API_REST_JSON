@@ -11,15 +11,18 @@ app.set('json spaces',2)
 
 
 app.use(morgan('dev'));
-//routes
-app.use(require('./routes/index'))
-app.use('/api/movies',require('./routes/movies.Js'))
+
+
+// allow to received data since forms html, js and css
+app.use(express.urlencoded({extended:false}));
 
 // setting the app in order to allow received json data 
 app.use(express.json());
 
-// allow to received data since forms html, js and css
-app.use(express.urlencoded({extended:false}));
+
+//routes
+app.use('/api/users',require('./routes/users'))
+app.use('/api/movies',require('./routes/movies.Js'))
 
 
 // starting the server
